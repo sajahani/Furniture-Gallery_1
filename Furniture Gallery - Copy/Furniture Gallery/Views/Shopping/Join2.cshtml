@@ -1,0 +1,197 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.Join2>
+@{
+	Layout = "_LayoutHome";
+}
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">MyBag</h4>
+
+									</div>
+									<div class="content table-responsive table-full-width">
+										<table class="table table-striped">
+
+											<thead>
+												<tr>
+													<th>
+														Product Name
+													</th>
+													<th>
+														Price
+													</th>
+													<th>
+														Quantity
+													</th>
+													<th>
+														Total Amount
+													</th>
+													<th>
+														Order_Date
+													</th>
+													<th>
+														Order_Status
+													</th>
+
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var item in Model)
+												{
+													<tr>
+														<td>
+															@item.product.Productname
+														</td>
+														<td>
+															@item.product.Price
+														</td>
+														<td>
+															@item.productorder.Quantity
+															@*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+														<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+														<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+														</td>
+														<td>
+															@item.productorder.TotalAmount
+														</td>
+														<td>
+															@item.order.OrderDate
+														</td>
+														<td>
+															@item.order.OrderStatus
+														</td>
+														<td>
+															<form asp-action="CheckOut">
+																<div class="form-group">
+																	<input type="submit" value="CheckOut" class="btn btn-primary" />
+																</div>
+															</form>
+															
+														</td>
+													</tr>
+												}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+				@*
+							<div class="list-group shadow-sm">
+								<div class="list-group-item bg-light text-website b">
+
+									<div class="row">
+										<div class="col-sm-12 col-lg-4 ">
+											Product Name
+										</div>
+										<div class="col-sm-12 col-lg-3">
+											Price
+										</div>
+										<div class="col-sm-12 col-lg-2">
+											Quantity
+										</div>
+										<div class="col-sm-12 col-lg-1">
+											TotalAmount
+										</div>
+										<div class="col-sm-12 col-lg-2">
+											Order_Date
+										</div>
+										<div class="col-sm-12 col-lg-2">
+											Order_Status
+										</div>
+										<div class="col-sm-12 col-lg-2">
+										</div>
+
+
+									</div>
+								</div>
+*@
+								@*<div class="list-group-item">
+									<div class="row my-4">
+										<div class="col-sm-12 col-lg-4 mb-3">
+											<a href="produk-detail.html" class="hvnb">
+												<div class="media">
+													<img src="assets/img/produk/1.jpg" width="60" class="mr-3">
+													<div class="media-body text-dark">
+														Talisa Dress Women's Casual Short-Sleeve Premium Dress
+													</div>
+												</div>
+											</a>
+										</div>*@
+										@*@foreach (var item in Model)
+										{
+											<div class="col-sm-12 col-lg-3 mb-3">
+												<h4 class="text-website">@item.product.Productname</h4>
+											</div>
+											<div class="col-sm-12 col-lg-2 mb-3">
+												<h5 class="text-website">@item.product.Price</h5>
+											</div>
+											<div class="col-sm-12 col-lg-2 mb-3">
+												<h5 class="text-website">@item.productorder.Quantity</h5>
+											</div>
+											<div class="col-sm-12 col-lg-2 mb-3">
+												<h5 class="text-website">@item.productorder.TotalAmount</h5>
+											</div>
+											<div class="col-sm-12 col-lg-2 mb-3">
+												<h5 class="text-website">@item.order.OrderDate</h5>
+											</div>
+											<div class="col-sm-12 col-lg-2 mb-3">
+												<h5 class="text-website">@item.order.OrderStatus</h5>
+											</div>
+										}*@
+									@*</div>
+
+									<div class="row my-4">
+										<div class="col-sm-12 col-lg-4 mb-3">
+											<div class="media">
+												<span class="mr-3">Catatan</span>
+												<div class="media-body text-dark">
+													<textarea class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-12 col-lg-3 mb-3">
+											Kurir <select class="form-control"><option>JNE REG (3 hari Kerja)</option></select>
+										</div>
+										<div class="col-sm-12 col-lg-2 mb-3">
+										</div>
+										<div class="col-sm-12 col-lg-2 mb-3">
+											<h5 class="text-website">Rp35.000</h5>
+										</div>
+									</div>
+								</div>*@
+								<div class="list-group-item">
+									<a href="pembayaran.html">
+										<button class="btn bg-website text-white float-right">Lanjut Pembayaran</button>
+									</a>
+									<div class="float-right h5 mr-3 b text-website">Rp135.000</div>
+								</div>
+
+							</div>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<br />
+			<br />
+			<br />
+
+
+		</div>
+	</div>
+</div>
+
+

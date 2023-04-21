@@ -1,0 +1,153 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.Join2>
+@{
+	Layout = "_LayoutHome";
+	var totalorder = Model.Sum(p => p.productorder.TotalAmount);
+}
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+
+				<div class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="card">
+									<div class="header">
+										<h4 class="title">MyBag</h4>
+
+									</div>
+									<div class="content table-responsive table-full-width">
+										<table class="table table-striped">
+
+											<thead>
+												<tr>
+													<th>
+														Product Name
+													</th>
+													<th>
+														Price
+													</th>
+													<th>
+														Quantity
+													</th>
+													<th>
+														Total Amount
+													</th>
+													<th>
+														Order_Date
+													</th>
+													<th>
+														Order_Status
+													</th>
+
+													<th></th>
+												</tr>
+											</thead>
+											<tbody>
+												@foreach (var item in Model)
+												{
+													<tr>
+														<td>
+															@item.product.Productname
+														</td>
+														<td>
+															@item.product.Price
+														</td>
+														<td>
+															@item.productorder.Quantity
+															@*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+														<a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+														<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+														</td>
+														<td>
+															@item.productorder.TotalAmount
+														</td>
+														<td>
+															@item.order.OrderDate
+														</td>
+														<td>
+															@item.order.OrderStatus
+														</td>
+														<td>
+															
+																<div class="form-group">
+																	
+																	@*<input type="hidden" name ="productorderid"  value="@item.productorder.Id"/>*@
+																@*	<input type="hidden" name="userid" value="@item.order.UseraccountId" />*@
+															
+																	
+																	<div class="product-removal">
+																		@*<input type="submit" id="myButton"  value="CheckOut" class="btn btn-warning text-white" />*@
+																			
+																		
+                                                                                        
+																		@*<button asp-controller="Shopping" asp-action="DeleteConfirmed" asp-route-id="@item.order.Id"class="btn btn-danger">
+																			Remove
+																		</button>*@
+																	<a href="@Url.Action("DeleteConfirmed", "Shopping", new { id = item.order.Id })" class="btn btn-danger">Remove</a>
+															</div>
+																</div>
+														
+															
+														</td>
+													</tr>
+												}
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+			
+								<div class="list-group-item">
+									<a href="/Shopping/CheckOut">
+								<button class="btn btn-warning text-white">CheckOut</button>
+									</a>
+							<div class="float-right h5 mr-3 b text-website">Total Order :@totalorder</div>
+								</div>
+
+							</div>
+
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
+			<br />
+			<br />
+			<br />
+
+
+		</div>
+	</div>
+</div>
+
+<script>
+
+
+	$('.product-removal button').click(function () {
+		removeItem(this);
+	});
+
+	function removeItem(removeButton) {
+		/* Remove row from DOM and recalc cart total */
+		var productRow = $(removeButton).parent().parent();
+		productRow.slideUp(fadeTime, function () {
+			productRow.remove();
+			recalculateCart();
+		});
+	}
+
+
+	//<script>
+	//	document.getElementById("myButton").addEventListener("click", function () {
+	//		window.location.href = "@Url.Action("CheckOut", "Shopping")";
+	//	});
+</script>
+
+</script>
+

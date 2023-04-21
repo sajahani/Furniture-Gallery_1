@@ -1,0 +1,87 @@
+﻿@model Furniture_Gallery.Models.Furnitureproduct
+@{
+
+    ViewData["Title"] = "Shopping";
+    Layout = "_LayoutHome";
+
+}
+
+@*@foreach(var item in Model)
+{*@
+<div class="row mb-4">
+	<div class="col-sm-12 col-lg-5">
+		
+			<img class="card-img-top img-fluid" src=@Url.Content("~/Images/" + Model.ImagePath)
+			 asp-append-version="true" />
+	</div>
+	<div class="col-sm-12 col-lg-7">
+		<div class="card card-body shadow-sm">
+			<h1>@Model.Productname</h1>
+			<h3 class="text-website">
+				@Model.Description
+			</h3>
+			<h3 class="text-warning">
+				@Model.Price<sub>Jd</sub>
+			</h3>
+
+			<hr>
+			@*<p class="b text-muted">Quantity</p>*@
+
+			<form asp-action="AddToItem" asp-controller="Shopping">
+			<div class="row">
+				<div class="col-sm-12 col-lg-4">
+				    <div class="form-group">
+
+							
+			         <label class="control-label" style="color:black ; font-size:20px;">Quantity : </label>
+			         <input type="number" name="quantity" placeholder="Enter qty" min="1" class="btn btn-outline-#68B3C8 float-right" required>
+					 <input type="hidden" name="productId" asp-for="@Model.Id" />
+					 
+							
+							
+						
+					</div>
+				</div>
+			</div>
+			<p class="b text-muted"></p>
+		
+			<div class="my-2">
+				<div class="row">
+					<div class="col-sm-12 col-lg-5">
+						<input type="submit"  value="Add To Cart" class="btn bg-warning text-white btn-block" />
+					</div>
+				
+
+				
+				</div>
+			</div>
+			</form>
+			<hr>
+			@*<div class="table-responsive">
+				<table>
+					<tbody>
+						<tr>
+							<td>Pengiriman Ke</td>
+							<td>:</td>
+							<td>&nbsp;</td>
+							<td class="text-website">Medan Kota</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td><i class="fa fa-truck"></i> Pilih Kurir</td>
+							<td>:</td>
+							<td>&nbsp;</td>
+							<td>
+								<select class="form-control form-control-sm">
+									<option>JNE REG (3 Hari Kerja)</option>
+								</select>
+
+							</td>
+							<td>Rp35.000</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>*@
+		</div>
+	</div>
+</div>

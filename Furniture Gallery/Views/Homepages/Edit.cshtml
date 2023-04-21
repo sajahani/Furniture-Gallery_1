@@ -1,0 +1,67 @@
+﻿@model Furniture_Gallery.Models.Homepage
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutDashboard";
+}
+
+<h3>Edit Home Page </h3>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="HomepageId" />
+            <input type="hidden" asp-for="HomepageImage"/>
+            <input type="hidden" asp-for="HomepageLogo"/>
+            <div class="form-group">
+                <label asp-for="HomepageTitle" class="control-label"></label>
+                <input asp-for="HomepageTitle" class="form-control" />
+                <span asp-validation-for="HomepageTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HomepageDescription" class="control-label"></label>
+                <input asp-for="HomepageDescription" class="form-control" />
+                <span asp-validation-for="HomepageDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="background_Image" class="control-label"></label> 
+                <input asp-for="background_Image" class="form-control" type="file" accept="image/*"/>
+                <span asp-validation-for="background_Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logo_Image" class="control-label"></label>
+                <input asp-for="Logo_Image" class="form-control" type="file" accept="image/*" />
+                <span asp-validation-for="Logo_Image" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailFacebook" class="control-label"></label>
+                <input asp-for="EmailFacebook" class="form-control" />
+                <span asp-validation-for="EmailFacebook" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-warning btn-block"  />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

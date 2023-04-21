@@ -1,0 +1,156 @@
+﻿@model Furniture_Gallery.Models.Useraccount
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@*
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+
+<h4>Useraccount</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label"></label>
+                <select asp-for="RoleId" class ="form-control" asp-items="ViewBag.RoleId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+</html>*@
+@*///////////////////////////////////////////////////////////////////////////*@
+
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/AssetsLogin/assets/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/AssetsLogin/assets/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/AssetsLogin/assets/css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="~/AssetsLogin/assets/css/style.css">
+
+    <title>Login </title>
+</head>
+<body>
+
+
+
+    <div class="d-lg-flex half">
+        <div class="bg order-1 order-md-2" style="background-image: url('/AssetsLogin/images/bg_1.jpg');"></div>
+        <div class="contents order-2 order-md-1">
+
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7">
+                        <h3>Login to <strong>Furniture Shop</strong></h3>
+                        <form asp-action="Login" method="post">
+
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" placeholder="your-email@gmail.com" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label asp-for="Password" class="control-label"></label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="your-password" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                           @* <div class="form-group first">
+                                <label for="username">Email Address</label>
+                                <input type="text" name="Email" class="form-control" placeholder="your-email@gmail.com" id="username">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" name="Password" class="form-control" placeholder="Your Password" id="password">
+                            </div>*@
+
+
+                         
+
+                            <input type="submit" value="Log In" class="btn btn-block btn-primary">
+
+                            <div class="d-sm-flex mb-5 align-items-center">
+                                @* <label class="control control--checkbox mb-3 mb-sm-0">
+                                <span class="caption">Agree our <a href="#">Terms and Conditions</a></span>
+                                <input type="checkbox" checked="checked" />
+                                <div class="control__indicator"></div>
+                                </label>*@
+                                <span class="ml-auto"><a href="/RegisterLogin/Register" class="forgot-pass">Don't have an account yet? Register</a></span>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="~/AssetsLogin/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/AssetsLogin/assets/js/popper.min.js"></script>
+    <script src="~/AssetsLogin/assets/js/bootstrap.min.js"></script>
+    <script src="~/AssetsLogin/assets/js/main.js"></script>
+   
+</body>
+</html>

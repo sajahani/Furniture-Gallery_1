@@ -1,0 +1,76 @@
+﻿@model Furniture_Gallery.Models.Furniturecategory
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "_LayoutDashboard";
+}
+
+
+<h3>Edit Category</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ImagePath" />
+            <div class="form-group">
+                <label asp-for="Categoryname" class="control-label"></label>
+                <input asp-for="Categoryname" class="form-control" />
+                <span asp-validation-for="Categoryname" class="text-danger"></span>
+            </div>
+
+
+            <div class="container px-4">
+                <div class="row gx-10">
+
+
+                    <div class="col">
+                        <div class="p-3 border bg-white center-block">
+                            <img src=@Url.Content("~/Images/" + Model.ImagePath)
+                                 asp-append-version="true" style="border-radius:20%;" width="200" height="200" />
+                        </div>
+                    </div>
+
+                           
+                </div>
+            </div>
+
+            <br />
+            <br/>
+            <div class="form-group">
+                <div></div>
+                <label asp-for="ImageCat" class="control-label"></label>
+
+                <input asp-for="ImageCat" class="form-control" type="file" accept="image/*" />
+                <span asp-validation-for="ImageCat" class="text-danger"></span>
+            </div>
+
+
+
+
+           @* <div class="form-group">
+                <div></div>
+                <label asp-for="ImageCat" class="control-label"></label>
+                <img src=@Url.Content("~/Images/" + Model.ImagePath)
+                     asp-append-version="true" style="border-radius:20%;" width="100" height="100" />
+                  
+                <input asp-for="ImageCat" class="form-control" type="file" accept="image/*"/>
+                <span asp-validation-for="ImageCat" class="text-danger"></span>
+            </div>
+*@
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-warning btn-block" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

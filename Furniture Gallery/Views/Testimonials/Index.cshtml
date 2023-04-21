@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.Testimonial>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
+}
+<style>
+    form {
+        display: inline-block;
+    }
+</style>
+<h3>Testimonials</h3>
+@*
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+*@
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title"></h4>
+
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+
+    <thead>
+        <tr>
+          
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TestimonialStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Useraccount.Firstname)
+            </th>
+                                  
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                
+                @Html.DisplayFor(modelItem => item.TestimonialStatus)
+               
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Useraccount.Firstname)
+                @Html.DisplayFor(modelItem => item.Useraccount.Lastname)
+             
+            </td>
+            <td>
+                                            @if (item.TestimonialStatus == "pending")
+                                            {
+                                                 
+                                                    <form asp-action="ApproveTestimonial">
+                                                        <input type="hidden" name="testimonialId" value="@item.TestimonialId" />
+                                                        <input class="btn btn-warning btn-simple" type="submit" value="Approve" />|
+                                                    </form>
+                                                    <form asp-action="DisapproveTestimonial">
+                                                        <input type="hidden" name="testimonialId" value="@item.TestimonialId" />
+                                                        <input class="btn btn-warning btn-simple" type="submit" value="Disapprove" />|
+                                                    </form>
+                                              
+                                            }
+                                            <a asp-action="Delete" asp-route-id="@item.TestimonialId">Delete</a>
+
+
+
+
+
+                                        </td>
+        </tr>
+}
+    </tbody>
+</table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).on('click', '.approve', function () {
+        var testimonialId = $(this).data('id');
+        var element = $(this);
+
+
+
+    //$(document).on('click', '.accept', function () {
+    //    var TestimonialId = $(this).data('id');
+    //    var element = $(this);
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "@Url.Action("AcceptTestimonial", "Testimonials")",
+    //        data: { TestimonialId: TestimonialId },
+    //        success: function (data) {
+    //            element.closest("tr").find("td:nth-child(2)").text("Accepted");
+    //        }
+    //    });
+    //});
+
+</script>
+
+
+@*<script>
+    function changeStatus(el) {
+        var parent = el.parentNode;
+        parent.innerHTML = '<span>Accepted</span>';
+    }
+</script>
+*@
+
+       

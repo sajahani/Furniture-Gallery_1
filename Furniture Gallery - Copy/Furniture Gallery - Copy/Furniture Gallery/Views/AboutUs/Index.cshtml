@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.AboutU>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
+}
+
+<h3>About Us</h3>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">About us manage</h4>
+                       @* <p class="category">Here is a subtitle for this table</p>*@
+                    </div>
+                    <div class="content table-responsive table-full-width">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+              Title
+            </th>
+            <th>
+               Description
+            </th>
+            <th>
+               Image
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                    <img src=@Url.Content("~/Images/" + item.ImagePath)
+                     asp-append-version="true" style="border-radius:30%;" width="100" height="100" />
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AboutusId" style="font-size:20px">Edit</a> |
+              <a asp-action="Delete" asp-route-id="@item.AboutusId" style="font-size:20px">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+

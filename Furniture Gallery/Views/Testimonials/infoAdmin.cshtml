@@ -1,0 +1,192 @@
+﻿@model Furniture_Gallery.Models.Useraccount
+
+@{
+    ViewData["Title"] = "infoAdmin";
+    Layout = "_LayoutDashboard";
+}
+
+<h1>infoAdmin</h1>
+@*
+<h4>Useraccount</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="infoAdmin">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagePath" class="control-label"></label>
+                <input asp-for="ImagePath" class="form-control" />
+                <span asp-validation-for="ImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label"></label>
+                <select asp-for="RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <div class="card card-user">
+                        <div class="image">
+                            <img src="~/AssetsDash/img/background.jpg" alt="..." />
+                        </div>
+                        <div class="content">
+                            <div class="author">
+                                @* <img class="avatar border-white" src="assets/img/faces/face-2.jpg" alt="..." />*@
+                                <img class="avatar border-white" src=@Url.Content("~/images/" + Model.ImagePath)
+                                     asp-append-version="true" style="border-radius:20%;" width="100" height="100" />
+
+                                <h4 class="title">
+                                    @(Model.Firstname + "  " + Model.Lastname)<br />
+                                    @*  <a href="#"><small>chetfaker</small></a>*@
+                                </h4>
+                            </div>
+                            <p class="description text-center">
+                                @Model.Role.Rolename
+                                <br>
+
+                            </p>
+                        </div>
+                        <hr>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-8 col-md-7">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Admin Profile</h4>
+                        </div>
+                        <div class="content">
+                            <form asp-action="infoAdmin" asp-controller="Testimonials" method="post" enctype="multipart/form-data">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <input type="hidden" asp-for="Id" />
+                                        <input type="hidden" asp-for="ImagePath" />
+                                        <input type="hidden" asp-for="Password" />
+                                        <input type="hidden" asp-for="RoleId" />
+
+
+                                        <div class="form-group">
+                                            <label asp-for="Firstname" class="control-label"></label>
+                                            <input asp-for="Firstname" type="text" class="form-control border-input" />
+                                            <span asp-validation-for="Firstname" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Lastname" class="control-label"></label>
+                                            <input asp-for="Lastname" type="text" class="form-control border-input" />
+                                            <span asp-validation-for="Lastname" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Username" class="control-label"></label>
+                                            <input asp-for="Username" type="text" class="form-control border-input" />
+                                            <span asp-validation-for="Username" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="Password" class="control-label"></label>
+                                            <input asp-for="Password" type="password" class="form-control border-input" />
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="Email" class="control-label"></label>
+                                            <input asp-for="Email" type="email" class="form-control border-input" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="ImageUser" class="control-label"></label>
+                                            <input asp-for="ImageUser" class="form-control" />
+                                            <span asp-validation-for="ImageUser" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class=" form-group text-center">
+                                        <button type="submit" class="btn btn-info btn-fill btn-wd">Update Profile</button>
+                                    </div>
+                                </div>
+                                <div class="clearfix">
+                                    <div id="message" class="alert alert-primary">
+                                        @TempData["Message"]
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

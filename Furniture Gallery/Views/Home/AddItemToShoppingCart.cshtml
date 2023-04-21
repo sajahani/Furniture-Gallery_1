@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.Productorder>
+
+@{
+    ViewData["Title"] = "AddItemToShoppingCart";
+    Layout = "_LayoutHome";
+}
+
+<h1>AddItemToShoppingCart</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+
+            <th>Selected amount</th>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+            <th>Order Date</th>
+            <th></th>
+           
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Quantity
+            </td>
+            <td>
+                @item.Product.Productname
+            </td>
+            <td>
+                @item.Product.Price
+            </td>
+                <td>
+                     @(item.Quantity*item.Product.Price)
+                </td>
+            <td>
+                @item.Order.OrderDate
+            </td>
+                <td>
+                    @(item.Order.Useraccount.Firstname)
+                </td>
+            <td>
+                <td class="align-middle">
+                    <a class="text-danger" asp-controller="Orders" asp-action="RemoveItemFromShoppingCart"
+                   asp-route-id="@item.Product.Id">
+                        <i class="bi bi-cart-dash"></i>
+                    </a>
+                    |
+                    <a class="text-success" asp-controller="Orders" asp-action="AddItemToShoppingCart"
+                   asp-route-id="@item.Product.Id">
+                        <i class="bi bi-cart-plus"></i>
+                    </a>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="2"></td>
+            <td><b>Total:</b></td>
+            <td>
+             @*   @Model.ShoppingCartTotal.ToString("c")*@
+            </td>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>

@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.Productorder>
+@{
+    Layout = "_LayoutHome";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Striped Table</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    <div class="content table-responsive table-full-width">
+						<div class="container my-5">
+							<div class="card card-body shadow-sm mb-4">
+								<div class="row">
+									<div class="col-sm-12 col-lg-4">
+										<h6 class="text-website"></h6>
+										<h5></h5>
+										<p>
+
+										</p>
+									</div>
+									<div class="col-sm-12 col-lg-4">
+										<h6></h6>
+										<p></p>
+									</div>
+								</div>
+							</div>
+							<div class="list-group shadow-sm">
+								<div class="list-group-item bg-light text-website b">
+						
+									<div class="row">
+										<div class="col-sm-12 col-lg-4">
+											Product number
+										</div>
+										<div class="col-sm-12 col-lg-3">
+											Product Name
+										</div>
+										<div class="col-sm-12 col-lg-2">
+										    Price
+										</div>
+										<div class="col-sm-12 col-lg-1">
+											Quantity
+										</div>
+										<div class="col-sm-12 col-lg-2">
+											TotalAmount
+										</div>
+									</div>
+								</div>
+								 
+								<div class="list-group-item">
+									<div class="row my-4">
+										<div class="col-sm-12 col-lg-4 mb-3">
+											<a href="produk-detail.html" class="hvnb">
+												<div class="media">
+													<img src="assets/img/produk/1.jpg" width="60" class="mr-3">
+													<div class="media-body text-dark">
+														Talisa Dress Women's Casual Short-Sleeve Premium Dress
+													</div>
+												</div>
+											</a>
+										</div>
+										@foreach (var item in Model)@*TempData["cart"] as List<Furniture_Gallery.Models.Productorder>*@
+										{
+										<div class="col-sm-12 col-lg-3 mb-3">
+											<h4 class="text-website">@item.Product.Productname</h4>
+										</div>
+										<div class="col-sm-12 col-lg-2 mb-3">
+											<h5 class="text-website">@item.Product.Price</h5>
+										</div>
+										<div class="col-sm-12 col-lg-2 mb-3">
+											<h5 class="text-website">@item.Quantity</h5>
+										</div>
+											<div class="col-sm-12 col-lg-2 mb-3">
+												<h5 class="text-website">@item.TotalAmount</h5>
+											</div>
+										}
+									</div>
+
+									<div class="row my-4">
+										<div class="col-sm-12 col-lg-4 mb-3">
+											<div class="media">
+												<span class="mr-3">Catatan</span>
+												<div class="media-body text-dark">
+													<textarea class="form-control"></textarea>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-12 col-lg-3 mb-3">
+											Kurir <select class="form-control"><option>JNE REG (3 hari Kerja)</option></select>
+										</div>
+										<div class="col-sm-12 col-lg-2 mb-3">
+										</div>
+										<div class="col-sm-12 col-lg-2 mb-3">
+											<h5 class="text-website">Rp35.000</h5>
+										</div>
+									</div>
+								</div>
+								<div class="list-group-item">
+									<a href="pembayaran.html">
+										<button class="btn bg-website text-white float-right">Lanjut Pembayaran</button>
+									</a>
+									<div class="float-right h5 mr-3 b text-website">Rp135.000</div>
+								</div>
+								
+							</div>
+						
+						
+						</div>
+
+                    </div>
+                </div>
+            </div>
+
+
+       <br/>
+       <br/>
+       <br/>
+
+
+        </div>
+    </div>
+</div>
+
+

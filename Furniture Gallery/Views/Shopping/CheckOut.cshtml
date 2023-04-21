@@ -1,0 +1,51 @@
+﻿@{
+	Layout = "_LayoutHome";
+}
+
+
+<div class="container my-5">
+	<div class="row d-flex justify-content-center">
+		<div class="col-sm-12 col-lg-8">
+			<div class="card card-body shadow-sm">
+				<center class="mb-4">
+					<h2>CheckOut</h2>
+					<h4>Payment Information</h4>
+				</center>
+				<div class="row d-flex justify-content-center">
+					<div class="col-sm-12 col-lg-7 mb-4">
+						<form asp-action="CheckOut" asp-controller="Shopping" method="post">
+
+					
+							<input type="hidden" name="userid" value="@ViewBag.userid" />
+
+							<label>Credit Card number</label>
+							<input type="text" name="creditcard" class="form-control mb-4" style="background-color:whitesmoke">
+							<label>CVV</label>
+							<input type="text" name="cvv" class="form-control mb-4" style="background-color:whitesmoke">
+							
+							<p>@ViewBag.message</p>
+							<a href="" class="hvnb">
+								<input type="submit" value="Buy Now" class="btn bg-warning text-white btn-block mb-3">
+								<asp:Button Text="Send" OnClick="SendEmail" runat="server" />
+							</a>
+							@if (TempData["SuccessMessage"] != null)
+							{
+		                      <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+							}
+
+						</form>
+
+
+
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+					<div class="alert alert-danger">
+						@ViewBag.message2
+					</div>
+				

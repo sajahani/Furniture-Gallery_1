@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.Furnitureproduct>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
+}
+
+<h2>Products</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">product all</h4>
+                        
+                    </div>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Productname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Productname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    <img src=@Url.Content("~/Images/" + item.ImagePath)
+                     asp-append-version="true" style="border-radius:30%;" width="100" height="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Categoryname)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

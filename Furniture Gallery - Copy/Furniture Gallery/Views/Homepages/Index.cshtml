@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.Homepage>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutDashboard";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HomepageTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomepageDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomepageImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HomepageLogo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailFacebook)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomepageTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HomepageDescription)
+            </td>
+            <td>
+                    <img src=@Url.Content("~/Images/" + item.HomepageImage)
+                     asp-append-version="true" style="border-radius:30%;" width="100" height="100" />
+            </td>
+            <td>
+                    <img src=@Url.Content("~/Images/" + item.HomepageLogo)
+                     asp-append-version="true" style="border-radius:30%;" width="100" height="100" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailFacebook)
+            </td>
+            <td>
+
+
+                    <a asp-action="Edit" asp-route-id="@item.HomepageId" style="font-size:30px;"> Edit</a> 
+               @* <a asp-action="Details" asp-route-id="@item.HomepageId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.HomepageId">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

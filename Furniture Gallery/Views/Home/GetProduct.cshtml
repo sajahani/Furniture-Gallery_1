@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Furniture_Gallery.Models.Furnitureproduct>
+
+@{
+    Layout = "_LayoutHome";
+}
+
+<link href="~/assetscard/css/site.css" rel="stylesheet" />
+<style>
+    .card-img-top {
+        width: 100%;
+        height: 15vw;
+        object-fit: cover;
+    }
+</style>
+
+<br/>
+<br/>
+
+<div class="row">
+
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4 col-xs-6 border-warning mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white  " style="background-color:#000;">
+                            <p class="card-text">
+                                <h5 class="card-title text-white" style="font-size:20px;">
+                                    @item.Productname
+
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+
+                        <img class="card-img-top img-fluid"  src=@Url.Content("~/Images/" + item.ImagePath)
+                         asp-append-version="true"  />
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-body card-block">
+                            <p class="card-text"><b>Description: </b>@item.Description</p>
+                            <p class="card-text"><b>Category: </b>@item.Category.Categoryname</p>
+                            <p class="card-text"><b>Price: </b>@item.Price</p>
+                           @* <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
+                            <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>
+                            <p class="card-text ">
+                                <b>Status: </b>
+                                @if (DateTime.Now >= item.StartDate && DateTime.Now <= item.EndDate)
+                                {
+                                    <span class="badge bg-success text-white">AVAILABLE</span>
+                                }
+                                else if (DateTime.Now > item.EndDate)
+                                {
+                                    <span class="badge bg-danger text-white">EXPIRED</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-primary text-white">UPCOMING</span>
+                                }
+                            </p>*@
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer  ">
+                            <p class="card-text">
+                               @* <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
+                                    <i class="bi bi-eye-fill"></i> Show Details
+                                </a>*@
+                                <a class="btn btn-warning text-white" asp-action="AddToItem" asp-controller="Shopping" asp-route-id="@item.Id">
+                                    <i class="bi bi-cart-plus"></i>Add to Cart(@item.Price)<sub>JD</sub>
+                                </a>
+
+                               @* <form asp-action="AddToItem" asp-controller="Shopping">
+                                    <input type="number" name="quantity" placeholder="Quantity" min="1" class="btn btn-outline-#68B3C8 float-right" required>
+                                    <input type="hidden" name="productId" value="@item.Id">
+                                    <input type="submit" value="Add to Cart(@item.Price)Jd" class="btn btn-warning text-white bi bi-cart-plus" />
+                                   
+                                </form>*@
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
